@@ -12,5 +12,16 @@ class VocabModel {
   });
 
   // fromJson
+  VocabModel.fromJson(Map json) {
+    id = json["id"];
+    word = json["word"];
+    meaning = json["meaning"];
+  }
 
+  // toJson
+  Map toJson() => {
+    "id": id,
+    "word": word,
+    "meaning": meaning,
+  };
 }
