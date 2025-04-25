@@ -9,7 +9,13 @@ class FoldersPage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Folders"),
         leading: CupertinoButton(
-          onPressed: () {},
+          onPressed: () {
+            if (theme.value == ThemeMode.dark) {
+              theme.value = ThemeMode.light;
+            } else {
+              theme.value = ThemeMode.dark;
+            }
+          },
           child: Icon(
             theme.value == ThemeMode.dark ? Icons.dark_mode : Icons.light_mode,
           ),
