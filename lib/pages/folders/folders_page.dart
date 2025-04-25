@@ -5,6 +5,7 @@ class FoldersPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(FoldersController());
     return Scaffold(
       appBar: AppBar(
         title: Text("Folders"),
@@ -20,6 +21,15 @@ class FoldersPage extends StatelessWidget {
             theme.value == ThemeMode.dark ? Icons.dark_mode : Icons.light_mode,
           ),
         ),
+        actions: [
+          CupertinoButton(
+            onPressed: () async {
+              await Get.to(CreateFolderPage());
+              Get.find<FoldersController>().load();
+            },
+            child: Icon(Icons.add),
+          ),
+        ],
       ),
       body: SafeArea(
         child: Padding(
