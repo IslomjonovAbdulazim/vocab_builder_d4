@@ -15,4 +15,20 @@ class FoldersController extends GetxController {
     folders.value = await NetworkService.getAllFolders();
     isLoading.value = false;
   }
+
+  void delete(FolderModel folder) async {
+    isLoading.value = true;
+    folders.remove(folder);
+    await NetworkService.deleteFolder(folder);
+    isLoading.value = false;
+  }
 }
+
+
+
+
+
+
+
+
+

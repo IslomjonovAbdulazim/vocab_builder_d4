@@ -17,24 +17,28 @@ void main() async {
   );
   runApp(
     DevicePreview(
-      enabled: true,
+      enabled: false,
       builder: (context) => MyApp(),
     ),
   );
 }
+
+Rx<ThemeMode> theme = ThemeMode.dark.obs;
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      title: 'Vocab App',
-      theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
-      themeMode: ThemeMode.dark,
-      debugShowCheckedModeBanner: false,
-      home: FoldersPage(),
+    return Obx(
+      () => GetMaterialApp(
+        title: 'Vocab App',
+        theme: AppTheme.lightTheme,
+        darkTheme: AppTheme.darkTheme,
+        themeMode: theme.value,
+        debugShowCheckedModeBanner: false,
+        home: FoldersPage(),
+      ),
     );
   }
 }
