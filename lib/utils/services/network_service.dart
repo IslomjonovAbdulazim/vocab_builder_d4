@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:vocab_builder_d4/models/folder_model.dart';
 import 'package:http/http.dart' as http;
+import 'package:vocab_builder_d4/models/folder_model.dart';
 
 class NetworkService {
   static const baseUrl = "https://680b7b8bd5075a76d98b4882.mockapi.io";
@@ -18,16 +18,31 @@ class NetworkService {
 
     return result;
   }
+
+  static Future<void> createFolder(FolderModel folder) async {
+    final uri = Uri.parse("$baseUrl/folders");
+    await http.post(
+      uri,
+      body: jsonEncode(folder.toJson()),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    );
+  }
+
+  static Future<void> deleteFolder(FolderModel folder) async {
+    final uri = Uri.parse("$baseUrl/folders/${folder.id}");
+    await http.delete(uri);
+  }
+
+  static Future<void> updateFolder(FolderModel folder) async {
+    final uri = Uri.parse("$baseUrl/folders/${folder.id}");
+    await http.put(
+      uri,
+      body: jsonEncode(folder.toJson()),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    );
+  }
 }
-
-
-
-
-
-
-
-
-
-
-
-
