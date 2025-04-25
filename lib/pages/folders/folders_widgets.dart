@@ -13,7 +13,6 @@ class _Folders extends GetView<FoldersController> {
           return Padding(
             padding: const EdgeInsets.symmetric(vertical: 4),
             child: ListTile(
-              tileColor: context.cardColor,
               title: Text(model.name),
               subtitle: Text(model.createdAt.toString()),
             ),
