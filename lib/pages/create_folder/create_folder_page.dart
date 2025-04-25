@@ -5,12 +5,17 @@ class CreateFolderPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(CreateFolderController());
     return Scaffold(
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(20),
           child: Column(
-            children: [],
+            children: [
+              _Input(),
+              SizedBox(height: 20),
+              _Button(),
+            ],
           ),
         ),
       ),
